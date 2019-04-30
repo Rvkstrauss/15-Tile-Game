@@ -126,8 +126,7 @@ export class AppComponent implements OnInit {
 
   checkResults() {
     const results = Array.from(this.numbers);
-    results.splice(results.indexOf(0), 1);
-    const optimal = Array.apply(null, {length: 16}).map(Number.call, Number).splice(0, 1);
+    const optimal = Array.apply(null, {length: 16}).map(Number.call, Number).splice(0, 1).push(0);
     this.success = JSON.stringify(results) === JSON.stringify(optimal);
   }
 }
