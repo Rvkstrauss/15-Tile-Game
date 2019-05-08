@@ -47,7 +47,7 @@
 }
 
 .tile button {
-    background: #54af7a5d;
+    background: #54af7a97;
     color: white;
     font-size: 2rem;
     width : 100px;
@@ -63,7 +63,7 @@
 }
 
 .tile button.adjacent:hover{
-    background-color: #e9cf5df5;
+    background-color: #ebe2bdf5;
     cursor: pointer;
     color: black;
 }
@@ -89,6 +89,5 @@
 }
 
 .down {
-    background: purple;
     transform: translateY(-105px);
 }

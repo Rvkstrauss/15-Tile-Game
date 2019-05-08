@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
   direction = '';
   numbers = Array.apply(null, {length: 16}).map(Number.call, Number);
+  optimal = Array.apply(null, {length: 16}).map(Number.call, Number).splice(0, 1).push(0);
   grid = [];
   adjacents = [];
   emptyInArray = 0;
   emptyInGrid = {row: 0, col: 0};
   prevEmpty = {row: 0, col: 0};
   success = false;
+  rowLength = 4;
 
   ngOnInit() {
     this.shuffle(this.numbers);
@@ -21,18 +24,18 @@ export class AppComponent implements OnInit {
   }
 
   shuffle(array) {
-    let m = array.length;
-    let t;
-    let i;
+    let len = array.length;
+    let temp;
+    let index;
 
-    while (m) {
+    while (len) {
 
-      i = Math.floor(Math.random() * m--);
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
+      index = Math.floor(Math.random() * len--);
+      temp = array[len];
+      array[len] = array[index];
+      array[index] = temp;
     }
-    console.log('calc 0 in array', array, array.indexOf(0))
+    console.log('calc 0 in array', array, array.indexOf(0));
     this.emptyInArray = array.indexOf(0);
     return array;
   }
@@ -42,13 +45,14 @@ export class AppComponent implements OnInit {
     this.adjacents = [];
     const shuffled = Array.from(this.numbers);
     while (shuffled.length > 0) {
-      this.grid.push(shuffled.splice(0, 4));
+      this.grid.push(shuffled.splice(0, this.rowLength));
     }
     this.emptyInGrid = this.getEmptyTile();
-    if (chosen) {
-      this.moveTile(chosen);
-    }
-    
+    // for animation
+    // if (chosen) {
+    //  this.moveTile(chosen);
+    // }
+
     this.adjacents = this.getAdjacentTiles( this.emptyInGrid );
   }
 
@@ -57,7 +61,7 @@ export class AppComponent implements OnInit {
     this.numbers[this.emptyInArray] = chosen;
     this.numbers[chosenIndex] = 0;
     this.emptyInArray = chosenIndex;
-    
+
     this.setGrid(chosen);
 
     this.checkResults();
@@ -88,11 +92,9 @@ export class AppComponent implements OnInit {
     }
     const tile = document.getElementById(chosen.toString());
     tile.classList.add(this.direction);
-    console.log(tile.classList);
     setTimeout(() => {
       tile.classList.value = 'adjacent';
-      console.log(tile.classList);
-    }, 10000);
+    }, 2000);
   }
 
   getAdjacentTiles({ row, col }): any[] {
@@ -126,7 +128,6 @@ export class AppComponent implements OnInit {
 
   checkResults() {
     const results = Array.from(this.numbers);
-    const optimal = Array.apply(null, {length: 16}).map(Number.call, Number).splice(0, 1).push(0);
-    this.success = JSON.stringify(results) === JSON.stringify(optimal);
+    this.success = JSON.stringify(results) === JSON.stringify(this.optimal);
   }
 }
