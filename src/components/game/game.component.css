@@ -1,0 +1,93 @@
+.puzzle-view {
+    height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.puzzle {
+    height: 100vh;
+    padding-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.puzzle-view h1 {
+    font-weight: 500;
+}
+
+.puzzle-view .instructions {
+    width: 200px;
+    font-size: 1.1rem; 
+    font-weight: 100;
+    color: rgb(236, 220, 220);
+}
+
+.tile-grid {
+    margin: 0 50px 0 50px;
+
+    background: #88d6a9;
+    border-radius: 5px;
+    width: 480px;
+    height: 480px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tile-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.tile button {
+    background: #54af7a97;
+    color: white;
+    font-size: 2rem;
+    width : 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.tile button.adjacent {
+    color: black ;
+    background-color: #f5b350f5;
+    transition: all 1s ease;
+}
+
+.tile button.adjacent:hover{
+    background-color: #ebe2bdf5;
+    cursor: pointer;
+    color: black;
+}
+
+.tile button.adjacent:active, .adjacent:focus {
+    outline: none;
+}
+
+.tile button.empty {
+    background: #474a88;
+}
+
+.left {
+    transform: translateX(105px);
+}
+
+.right {
+    transform: translateX(-105px);
+}
+
+.up {
+    transform: translateY(105px);
+}
+
+.down {
+    transform: translateY(-105px);
+}
