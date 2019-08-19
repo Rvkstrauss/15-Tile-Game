@@ -1,6 +1,12 @@
 # TileGame
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.  
+
+Install the game with npm/yarn or change it with bit.  
+[Install and Live demo](https://bit.dev/joshk/tile-15-game)  
+<p align="center">
+  <a href="https://bit.dev/joshk/tile-15-game/game"><img src="https://i.imagesup.co/images2/16ef2b230f2890f4ea20bc93133d55458ac44d70.png"></a>
+</p>
 
 ## Development server
 

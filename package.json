@@ -44,5 +44,24 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
+  },
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/compilers/angular@0.1.9"
+    },
+    "componentsDefaultDirectory": "components/{name}",
+    "packageManager": "npm",
+    "overrides": {
+      "*": {
+        "dependencies": {
+          "@angular/core": "-",
+          "@angular/common": "-"
+        },
+        "peerDependencies": {
+          "@angular/core": "~7.2.0",
+          "@angular/common": "~7.2.0"
+        }
+      }
+    }
   }
 }
